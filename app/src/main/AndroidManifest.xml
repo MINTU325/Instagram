@@ -12,6 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Instagram">
         <activity android:name=".SignupActivity"></activity>
+        <activity android:name=".MainScreenActivity"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

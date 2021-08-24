@@ -1,5 +1,6 @@
 package com.example.instagram
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Patterns
 import androidx.fragment.app.Fragment
@@ -57,6 +58,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
             override fun onDataChange(snapshot: DataSnapshot) {
                 var userDetailsModel = snapshot.getValue(UserDetailsModel::class.java)
                 Toast.makeText(context, "Login Successful", Toast.LENGTH_SHORT).show()
+                startActivity(Intent(context,MainScreenActivity::class.java))
             }
 
             override fun onCancelled(error: DatabaseError) {

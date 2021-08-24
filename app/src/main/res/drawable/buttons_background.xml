@@ -10,7 +10,7 @@
 
 
     <stroke android:width="3dp"
-        android:color="@color/black2"
+        android:color="@color/black"
         ></stroke>
 
 
