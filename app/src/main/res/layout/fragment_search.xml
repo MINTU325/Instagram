@@ -4,56 +4,42 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".Fragments.SearchFragment">
+    tools:context=".Fragments.SearchFragment"
+    android:orientation="vertical">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/app_bar_layout_Search"
+    <ImageView
+        android:id="@+id/ivBack"
+        android:layout_width="30sp"
+        android:layout_height="30sp"
+        android:layout_marginTop="25dp"
+        android:layout_marginStart="10dp"
+        android:src="@drawable/back_arrow"
+        android:visibility="gone"/>
+
+    <EditText
+        android:id="@+id/etSearch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="22dp"
-        android:layout_marginTop="12dp"
-        android:background="#EDE8E8">
+        android:hint="Search"
+        android:paddingVertical="5dp"
+        android:paddingHorizontal="50dp"
+        android:background="@color/gray"
+        android:layout_margin="20dp"
+        android:layout_toRightOf="@+id/ivBack"/>
 
-        <androidx.appcompat.widget.Toolbar
-            android:layout_width="match_parent"
-            android:layout_height="50dp">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <ImageView
-                    android:id="@+id/search_fragment_icon"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_marginTop="5dp"
-                    android:contentDescription="TODO"
-                    android:padding="2dp"
-                    android:src="@drawable/search" />
-
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="6dp"
-                    android:layout_marginEnd="15dp"
-                    android:layout_toEndOf="@id/search_fragment_icon"
-                    android:contentDescription="TODO"
-                    android:hint="Search ....."
-                    android:textColor="@color/black" />
-
-            </RelativeLayout>
-
-        </androidx.appcompat.widget.Toolbar>
-
-    </com.google.android.material.appbar.AppBarLayout>
+    <ImageView
+        android:id="@+id/ivSearch"
+        android:layout_width="25sp"
+        android:layout_height="25sp"
+        android:layout_marginTop="25dp"
+        android:layout_marginStart="30dp"
+        android:src="@drawable/search"
+        android:layout_toRightOf="@+id/ivBack"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvRecyclerView_Search"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/app_bar_layout_Search"
-
-        />
+        android:layout_below="@+id/etSearch"/>
 
 </RelativeLayout>
