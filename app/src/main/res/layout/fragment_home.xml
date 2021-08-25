@@ -25,10 +25,19 @@
                     android:layout_alignParentLeft="true"
                     android:contentDescription="TODO"
                     android:src="@drawable/instagram" />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:id="@+id/btnaddPost"
+                    android:layout_toStartOf="@id/btnMessage"
+                    android:layout_marginTop="10dp"
+                    android:contentDescription="TODO"
+                    android:src="@drawable/add" />
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
+                    android:id="@+id/btnMessage"
                     android:layout_marginTop="10dp"
                     android:layout_alignParentRight="true"
                     android:contentDescription="TODO"

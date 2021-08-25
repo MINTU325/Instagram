@@ -23,7 +23,7 @@ class MainScreenActivity : AppCompatActivity() {
                     return@OnNavigationItemSelectedListener true
                 }
                 R.id.nav_add_post -> {
-                    moveFrag(AddPostFragment())
+                    moveFrag(ReelsFragment())
                     return@OnNavigationItemSelectedListener true
                 }
                 R.id.nav_notification -> {

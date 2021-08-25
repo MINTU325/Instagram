@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <VideoView
+        android:id="@+id/VideoView2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="120dp">
+
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="290dp"
+            android:layout_marginEnd="20dp"
+            android:src="@drawable/ic_heart_like_love_icon" />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="330dp"
+            android:paddingEnd="25dp"
+            android:text="353k"
+            android:textAlignment="textEnd"
+            android:textColor="@color/white"
+            android:textSize="10sp" />
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="370dp"
+            android:layout_marginEnd="20dp"
+            android:src="@drawable/ic_message" />
+
+
+        <TextView
+            android:id="@+id/messcont"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="410dp"
+            android:paddingEnd="25dp"
+            android:text="3.5k"
+            android:textAlignment="textEnd"
+            android:textColor="@color/white"
+            android:textSize="10sp" />
+
+
+        <ImageView
+            android:id="@+id/sharevideo"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_below="@id/messcont"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="20dp"
+            android:src="@drawable/ic_share" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/sharevideo"
+            android:layout_marginTop="10dp"
+            android:paddingEnd="25dp"
+            android:text="23k"
+            android:textAlignment="textEnd"
+            android:textColor="@color/white"
+            android:textSize="10sp" />
+
+        <ProgressBar
+            android:id="@+id/videoProgressBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="180dp" />
+
+
+        <TextView
+            android:id="@+id/textUserName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/sharevideo"
+            android:paddingStart="30dp"
+            android:scrollHorizontally="true"
+            android:singleLine="true"
+            android:text="Username"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvFollow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/sharevideo"
+            android:layout_toEndOf="@id/textUserName"
+            android:paddingStart="30dp"
+            android:scrollHorizontally="true"
+            android:singleLine="true"
+            android:text=".Follow"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textUserName"
+            android:paddingStart="30dp"
+            android:id="@+id/textDescription"
+            android:text="Create HotShot with this sound"
+            android:textColor="@color/white" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textUserName"
+            android:paddingStart="30dp"
+            android:layout_toEndOf="@id/textVideoDescription"
+            android:text="more"
+            android:textColor="#D2CBCB" />
+
+
+        <TextView
+            android:id="@+id/textVideoDescription"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textDescription"
+            android:paddingStart="30dp"
+            android:scrollHorizontally="true"
+            android:singleLine="true"
+            android:text="Audio by Singer Name"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+    </RelativeLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddPostActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar_layout_addpost"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_50"
+            android:background="@color/white">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/btnClose"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:contentDescription="TODO"
+                    android:src="@drawable/close" />
+
+                <ImageView
+                    android:id="@+id/btnSavePost"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="10dp"
+                    android:contentDescription="TODO"
+                    android:src="@drawable/save_edited_info" />
+
+            </RelativeLayout>
+
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_below="@id/app_bar_layout_addpost"
+        android:layout_height="wrap_content">
+
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:id="@+id/ivImagePost"
+            android:src="@drawable/add_image_icon"
+            android:scaleType="centerCrop"
+            android:layout_height="250dp"
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:id="@+id/etDescriptionPost"
+            android:src="@drawable/add_image_icon"
+            android:scaleType="centerCrop"
+            android:padding="@dimen/dp_12"
+            android:maxLines="6"
+            android:hint="say Something About Your Post"
+            android:layout_height="150dp"
+            />
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>
