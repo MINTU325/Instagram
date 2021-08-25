@@ -19,6 +19,7 @@ class ReelsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_reels, container, false)
     }
@@ -26,8 +27,6 @@ class ReelsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         buildDta()
-
-
 
     }
 
@@ -67,9 +66,7 @@ class ReelsFragment : Fragment() {
                 "https://firebasestorage.googleapis.com/v0/b/skype-8a506.appspot.com/o/yt1s.com%20-%20Tu%20chale%20sang%20chale%20song%20whatsapp%20status%20%20nature%20whatsapp%20status_360p.mp4?alt=media&token=c0ac13ef-4254-4327-9281-bb6baa332809"
             )
         )
-
         viewpager2.adapter = VideoAdapter(videoList)
-        
     }
 
 }

@@ -36,8 +36,8 @@ android {
 
 dependencies {
     implementation 'de.hdodenhof:circleimageview:3.1.0'   //circular image view
-    implementation 'com.theartofdev.edmodo:android-image-cropper:2.8.+' // crop image
     implementation 'com.squareup.picasso:picasso:2.71828' // picasso
+    implementation 'com.theartofdev.edmodo:android-image-cropper:2.8.+' // crop image
 
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
