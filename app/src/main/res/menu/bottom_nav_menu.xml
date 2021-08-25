@@ -13,7 +13,7 @@
 
     <item
         android:id="@+id/nav_add_post"
-        android:icon="@drawable/add"
+        android:icon="@drawable/ic_reels"
         android:title="" />
     <item
         android:id="@+id/nav_notification"
