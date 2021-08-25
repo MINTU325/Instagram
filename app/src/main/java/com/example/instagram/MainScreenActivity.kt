@@ -49,6 +49,7 @@ class MainScreenActivity : AppCompatActivity() {
     }
 
     private fun moveFrag(fragmennt: Fragment){
+        //Buttom Navigation Bar Fragment Replace fun
         val fragmenttrans = supportFragmentManager.beginTransaction()
         fragmenttrans.replace(
             R.id.container, fragmennt)

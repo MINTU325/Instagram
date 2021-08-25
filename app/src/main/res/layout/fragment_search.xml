@@ -40,7 +40,7 @@
                     android:layout_toEndOf="@id/search_fragment_icon"
                     android:contentDescription="TODO"
                     android:hint="Search ....."
-                    android:textColor="@color/black2" />
+                    android:textColor="@color/black" />
 
             </RelativeLayout>
 
