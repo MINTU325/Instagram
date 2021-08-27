@@ -100,7 +100,7 @@
                     android:gravity="start">
 
                     <de.hdodenhof.circleimageview.CircleImageView
-                        android:id="@+id/profile_image"
+                        android:id="@+id/myprofile_image"
                         android:layout_width="@dimen/sp_100"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
