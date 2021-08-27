@@ -3,6 +3,7 @@ package com.example.instagram.HomeFragment
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.instagram.ListsPassingHelper
 import com.example.instagram.UserPostsModel
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.post_item_layout.view.*
@@ -15,27 +16,12 @@ class PostViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
 
         var publisherImage = ""
 
-        var uID = ""
-        firebaseDatabase.getReference("posts").orderByChild("postId")
-            .equalTo(userPostsModel.postId)
-                .addValueEventListener(object : ValueEventListener{
-                    override fun onDataChange(snapshot: DataSnapshot) {
-                        uID = snapshot.children.toString()
-                    }
-
-                    override fun onCancelled(error: DatabaseError) {
-                    }
-                })
-
-        firebaseDatabase.getReference("users").child(uID).child("profileImage")
-            .addValueEventListener(object : ValueEventListener{
-                override fun onDataChange(snapshot: DataSnapshot) {
-                    publisherImage = snapshot.value.toString()
-                }
-
-                override fun onCancelled(error: DatabaseError) {
-                }
-            })
+        for(i in ListsPassingHelper.userDetailsList){
+            if (i.username == userPostsModel.publisher){
+                publisherImage = i.profileImage.toString()
+                break
+            }
+        }
 
         view.apply {
             Glide.with(user_profile_image_search).load(publisherImage).into(user_profile_image_search)

@@ -54,9 +54,12 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     // after successful login getting data of current user from firebase realtime database
 
     private fun getDataFromDatabase() {
-        databaseReference.child(firebaseAuth.currentUser!!.uid).addValueEventListener(object : ValueEventListener{
+        ListsPassingHelper.userDetailsList.clear()
+        databaseReference.addValueEventListener(object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
-                var userDetailsModel = snapshot.getValue(UserDetailsModel::class.java)
+                for(userDetails in snapshot.children){
+                    ListsPassingHelper.userDetailsList.add(userDetails.getValue(UserDetailsModel::class.java)!!)
+                }
                 Toast.makeText(context, "Login Successful", Toast.LENGTH_SHORT).show()
                 startActivity(Intent(context,MainScreenActivity::class.java))
             }

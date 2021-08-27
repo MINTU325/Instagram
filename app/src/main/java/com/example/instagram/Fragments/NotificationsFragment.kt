@@ -61,8 +61,8 @@ class NotificationsFragment : Fragment(R.layout.fragment_notifications) {
 
     private fun setRecyclerView() {
         list.reverse()
-        rvRecyclerViewNotify.adapter = NotificationFragmentAdapter(list)
-        rvRecyclerViewNotify.layoutManager = LinearLayoutManager(context)
+        rvRecyclerViewNotify?.adapter = NotificationFragmentAdapter(list)
+        rvRecyclerViewNotify?.layoutManager = LinearLayoutManager(context)
     }
 
 }
