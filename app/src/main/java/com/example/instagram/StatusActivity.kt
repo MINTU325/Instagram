@@ -7,20 +7,11 @@ import androidx.appcompat.app.AppCompatActivity
 
 class StatusActivity : AppCompatActivity() {
     var video: VideoView? = null
-//    var medicontroller : MediaController? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_status)
         video = findViewById(R.id.vlVideo) as VideoView
-//
-//        if(medicontroller == null){
-//            medicontroller = MediaController(this)
-//            medicontroller!!.setAnchorView(this.video)
-//        }
-//        video!!.setMediaController(medicontroller)
-
-
         video!!.setVideoURI(Uri.parse("android.resource://" + packageName + "/" + R.raw.statusvideo))
         video!!.requestFocus()
         video!!.start()
