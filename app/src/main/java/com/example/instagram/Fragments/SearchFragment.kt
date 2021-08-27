@@ -1,5 +1,6 @@
 package com.example.instagram.Fragments
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -17,18 +18,21 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.android.synthetic.main.fragment_search.*
 
-class SearchFragment : Fragment() {
+class SearchFragment : Fragment(R.layout.fragment_search) {
 
     private var listImage = ArrayList<String>()
     private var listUser = ArrayList<UserDetailsModel>()
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        setImageData()
-        return inflater.inflate(R.layout.fragment_search, container, false)
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+
+        FirebaseStorage.getInstance().getReference("User Posts")
+            .listAll().addOnSuccessListener { listResult ->
+                for(fileRef in listResult.items){
+                    listImage.add(fileRef.downloadUrl.toString())
+                }
+            }
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -68,19 +72,8 @@ class SearchFragment : Fragment() {
             })
     }
 
-    private fun setImageData() {
-        FirebaseStorage.getInstance().getReference("User Posts")
-            .listAll().addOnSuccessListener { listResult ->
-                for(fileRef in listResult.items){
-                    fileRef.downloadUrl.addOnSuccessListener { uri ->
-                        listImage.add(uri.toString())
-                    }
-                }
-            }
-    }
-
     private fun setRecyclerView(viewId: Int) {
-        rvRecyclerView_Search.adapter = SearchFragmentAdapter(listImage,listUser,viewId)
+        rvRecyclerView_Search?.adapter = SearchFragmentAdapter(listImage,listUser,viewId)
         if(viewId == 0)
            rvRecyclerView_Search?.layoutManager = GridLayoutManager(context,3)
         else
