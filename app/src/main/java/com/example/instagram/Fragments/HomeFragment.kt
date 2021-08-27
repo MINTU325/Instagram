@@ -20,6 +20,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.fragment_home.*
+import kotlin.collections.ArrayList
 
 class HomeFragment : Fragment() {
 
@@ -100,6 +101,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun setRecyclerView() {
+        list.reverse()
         rvRecyclerView_Home?.adapter = PostAdapter(list)
         rvRecyclerView_Home?.layoutManager = LinearLayoutManager(context)
     }

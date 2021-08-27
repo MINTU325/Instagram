@@ -4,8 +4,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.instagram.R
+import com.example.instagram.UserPostsModel
 
-class NotificationFragmentAdapter(private var list : List<String>) : RecyclerView.Adapter<NotificationFragmentViewHolder>() {
+class NotificationFragmentAdapter(private var list : List<UserPostsModel>) : RecyclerView.Adapter<NotificationFragmentViewHolder>() {
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -16,7 +17,7 @@ class NotificationFragmentAdapter(private var list : List<String>) : RecyclerVie
     }
 
     override fun onBindViewHolder(holder: NotificationFragmentViewHolder, position: Int) {
-        holder.setData()
+        holder.setData(list[position])
     }
 
     override fun getItemCount(): Int {
