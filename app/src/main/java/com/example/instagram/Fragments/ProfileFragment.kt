@@ -8,15 +8,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.viewpager.widget.ViewPager
 import androidx.viewpager2.widget.ViewPager2
 import com.example.instagram.ProfileViewPager.ProfileViewPagerAdapter
 import com.example.instagram.R
 import com.google.android.material.tabs.TabLayout
-import com.google.android.material.tabs.TabLayout.OnTabSelectedListener
 import com.theartofdev.edmodo.cropper.CropImage
-import kotlinx.android.synthetic.main.activity_add_post.*
 import kotlinx.android.synthetic.main.fragment_profile.*
 
 class ProfileFragment : Fragment() {
@@ -24,7 +20,7 @@ class ProfileFragment : Fragment() {
     private lateinit var tabLayout: TabLayout
     private lateinit var pagerAdapter: ProfileViewPagerAdapter
 
-    private var ImageUri2: Uri? = null
+    private var ImageUri3: Uri? = null
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -36,39 +32,37 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         myprofile_image.setOnClickListener {
-            val intent = CropImage.activity(ImageUri2)
+            val intent = CropImage.activity(ImageUri3)
                 .getIntent(requireContext())
             startActivityForResult(intent, CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE)
 
 
-
-
-            val fm :FragmentManager = childFragmentManager
-            pagerAdapter = ProfileViewPagerAdapter(fm, lifecycle)
-            ViewPageerr.setAdapter(pagerAdapter)
-
-            tabLayout.addTab(tabLayout.newTab().setText("MY Posts"))
-            tabLayout.addTab(tabLayout.newTab().setText("Tag Posts"))
-            tabLayout.addOnTabSelectedListener(
-                object : OnTabSelectedListener {
-                    override fun onTabSelected(tab: TabLayout.Tab) {
-                        ViewPageerr.setCurrentItem(tab.position)
-                    }
-
-                    override fun onTabUnselected(tab: TabLayout.Tab) {}
-                    override fun onTabReselected(tab: TabLayout.Tab) {}
-                })
+//            val fm :FragmentManager = childFragmentManager
+//            pagerAdapter = ProfileViewPagerAdapter(fm, lifecycle)
+//            ViewPageerr.setAdapter(pagerAdapter)
+//
+//            tabLayout.addTab(tabLayout.newTab().setText("MY Posts"))
+//            tabLayout.addTab(tabLayout.newTab().setText("Tag Posts"))
+//            tabLayout.addOnTabSelectedListener(
+//                object : OnTabSelectedListener {
+//                    override fun onTabSelected(tab: TabLayout.Tab) {
+//                        ViewPageerr.setCurrentItem(tab.position)
+//                    }
+//
+//                    override fun onTabUnselected(tab: TabLayout.Tab) {}
+//                    override fun onTabReselected(tab: TabLayout.Tab) {}
+//                })
 
         }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-
         if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE && resultCode == Activity.RESULT_OK && data != null) {
             val result2 = CropImage.getActivityResult(data)
-            ImageUri2 = result2.uri
-            myprofile_image.setImageURI(ImageUri2)
+            ImageUri3 = result2.uri
+            myprofile_image.setImageURI(ImageUri3)
         }
-    }}
+    }
+}
 
