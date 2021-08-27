@@ -16,7 +16,9 @@
         <activity android:name=".StatusActivity"> </activity>
         <activity android:name=".AddPostActivity" > </activity>
         <activity android:name=".SignupActivity" > </activity>
-        <activity android:name=".MainScreenActivity"> </activity>
+        <activity android:name=".MainScreenActivity">
+
+        </activity>
         <activity android:name=".MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
