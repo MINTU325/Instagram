@@ -59,13 +59,15 @@ class SignupFragment : Fragment(R.layout.fragment_signup) {
     // after successful creation of account saving user data into firebase realtime database
 
     private fun saveDataInDatabase(){
-        val userDetails = UserDetailsModel()
-        userDetails.apply {
-            fullName = etFullName.text.toString()
-            username = etUserName.text.toString()
-            email = etEmail.text.toString()
-        }
-        databaseReference.child(firebaseAuth.currentUser!!.uid).setValue(userDetails)
+        val fullName = etFullName.text.toString()
+        val username = etUserName.text.toString()
+        val email = etEmail.text.toString()
+        val profileImage = "https://firebasestorage.googleapis.com/v0/b/instagram-18379.appspot." +
+                "com/o/User%20Posts%2Fprofile.png?alt=media&token=470d3bcf-97b7-4db2-ba80-efb254d474f1"
+        val bio = "Instagram user"
+        val uId = firebaseAuth.currentUser!!.uid
+        val userDetails = UserDetailsModel(fullName, username, email, profileImage, bio, uId)
+        databaseReference.child(uId).setValue(userDetails)
         navController.navigate(R.id.action_signupFragment_to_loginFragment2)
     }
 
