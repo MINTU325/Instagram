@@ -94,7 +94,7 @@ class AddPostActivity : AppCompatActivity() {
                                         publisher = snapshot.value.toString()
 
                                         val postDetails =
-                                            UserPostsModel(postId, image, description, publisher)
+                                            UserPostsModel(postId, image, description, publisher,)
 
                                         ref.child(firebaseAuth.currentUser!!.uid).child(postId)
                                             .setValue(postDetails)
