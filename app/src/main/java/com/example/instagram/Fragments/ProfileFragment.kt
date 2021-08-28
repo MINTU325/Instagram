@@ -4,15 +4,29 @@ import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
+import com.example.instagram.ListsPassingHelper
 import com.example.instagram.ProfileViewPager.ProfileViewPagerAdapter
 import com.example.instagram.R
+import com.example.instagram.UserDetailsModel
+import com.google.android.gms.tasks.Continuation
+import com.google.android.gms.tasks.Task
 import com.google.android.material.tabs.TabLayout
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageTask
+import com.google.firebase.storage.UploadTask
 import com.theartofdev.edmodo.cropper.CropImage
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_profile.*
@@ -21,8 +35,17 @@ class ProfileFragment : Fragment() {
     private lateinit var ViewPageerr: ViewPager2
     private lateinit var tabLayout: TabLayout
     private lateinit var pagerAdapter: ProfileViewPagerAdapter
+    private var currentUser : UserDetailsModel = UserDetailsModel()
+    private val currentUserUid = FirebaseAuth.getInstance().currentUser?.uid
+    private var currentUserPostsCount = 0
+    private var currentUserFollowingsCount = 0
+    private var currentUserFollowersCount = 0
+
+    private val storageReference = FirebaseStorage.getInstance().getReference("User Posts")
+    private val firebaseDatabase = FirebaseDatabase.getInstance()
 
     private var ImageUri3: Uri? = null
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -33,11 +56,20 @@ class ProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        for(i in ListsPassingHelper.userDetailsList){
+            if(i.uid == currentUserUid.toString()){
+                currentUser = i
+                break
+            }
+        }
+
+        setCurrentUserData()
+
         myprofile_image.setOnClickListener {
             val intent = CropImage.activity(ImageUri3)
                 .getIntent(requireContext())
             startActivityForResult(intent, CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE)
-
 
 //            val fm :FragmentManager = childFragmentManager
 //            pagerAdapter = ProfileViewPagerAdapter(fm, lifecycle)
@@ -80,12 +112,86 @@ class ProfileFragment : Fragment() {
 
     }
 
+    private fun setCurrentUserData(){
+        currentUserPostsCount = 0
+        currentUserFollowingsCount = 0
+        currentUserFollowersCount = 0
+
+        firebaseDatabase.getReference("follows").child(currentUserUid.toString())
+            .child("followings").addValueEventListener(object : ValueEventListener{
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    for(i in snapshot.children){
+                        currentUserFollowingsCount++
+                    }
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                }
+            })
+        followings.text = currentUserFollowingsCount.toString()
+
+        firebaseDatabase.getReference("follows").child(currentUserUid.toString())
+            .child("followers").addValueEventListener(object : ValueEventListener{
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    for(i in snapshot.children){
+                        currentUserFollowersCount++
+                    }
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                }
+            })
+        followers.text = currentUserFollowersCount.toString()
+
+        firebaseDatabase.getReference("posts").child(currentUserUid.toString())
+            .addValueEventListener(object : ValueEventListener{
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    for(i in snapshot.children){
+                        currentUserPostsCount++
+                    }
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                }
+            })
+        totalPosts.text = currentUserPostsCount.toString()
+
+        currentUser.apply {
+            profileUsername.text = username
+            Glide.with(myprofile_image).load(profileImage).into(myprofile_image)
+            ProfileName.text = fullName
+            ProfileStatus.text = bio
+        }
+    }
+
+    private fun updateCurrentUserprofileInDatabase(){
+        val fileRef = storageReference.child(currentUserUid.toString() + ".jpg")
+        var uploadTask: StorageTask<*>
+        uploadTask = fileRef.putFile(ImageUri3!!)
+        uploadTask.continueWithTask(Continuation<UploadTask.TaskSnapshot, Task<Uri>> { task ->
+            if (!task.isSuccessful) {
+                task.exception?.let {
+                    throw it
+                }
+            }
+            return@Continuation fileRef.downloadUrl
+        }).addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                val downloadUrl = task.result.toString()
+                currentUser.profileImage = downloadUrl
+                firebaseDatabase.getReference("users").child(currentUserUid.toString())
+                    .child("profileImage").setValue(downloadUrl)
+            }
+        }
+    }
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE && resultCode == Activity.RESULT_OK && data != null) {
             val result2 = CropImage.getActivityResult(data)
             ImageUri3 = result2.uri
             myprofile_image.setImageURI(ImageUri3)
+            updateCurrentUserprofileInDatabase()
         }
     }
 }

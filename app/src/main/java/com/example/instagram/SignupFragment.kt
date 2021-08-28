@@ -65,9 +65,9 @@ class SignupFragment : Fragment(R.layout.fragment_signup) {
         val profileImage = "https://firebasestorage.googleapis.com/v0/b/instagram-18379.appspot." +
                 "com/o/User%20Posts%2Fprofile.png?alt=media&token=470d3bcf-97b7-4db2-ba80-efb254d474f1"
         val bio = "Instagram user"
-        val uId = firebaseAuth.currentUser!!.uid
-        val userDetails = UserDetailsModel(fullName, username, email, profileImage, bio, uId)
-        databaseReference.child(uId).setValue(userDetails)
+        val uid = firebaseAuth.currentUser?.uid.toString()
+        val userDetails = UserDetailsModel(fullName, username, email, profileImage, bio, uid)
+        databaseReference.child(uid).setValue(userDetails)
         navController.navigate(R.id.action_signupFragment_to_loginFragment2)
     }
 
