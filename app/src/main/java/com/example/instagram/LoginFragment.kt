@@ -29,7 +29,6 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         tvSignup.setOnClickListener {
             navController.navigate(R.id.action_loginFragment2_to_signupFragment)
         }
-
         btnLogin.setOnClickListener {
             myPreference.setEmail(etEmail.text.toString())
             if (isValid()){
