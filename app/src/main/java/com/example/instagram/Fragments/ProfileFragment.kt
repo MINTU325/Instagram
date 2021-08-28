@@ -38,6 +38,7 @@ class ProfileFragment : Fragment() {
                 .getIntent(requireContext())
             startActivityForResult(intent, CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE)
 
+
 //            val fm :FragmentManager = childFragmentManager
 //            pagerAdapter = ProfileViewPagerAdapter(fm, lifecycle)
 //            ViewPageerr.setAdapter(pagerAdapter)

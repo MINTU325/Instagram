@@ -33,6 +33,7 @@
                     android:src="@drawable/lock" />
 
                 <TextView
+                    android:id="@+id/profileUsername"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="50dp"
@@ -104,7 +105,7 @@
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/myprofile_image"
                         android:layout_width="@dimen/sp_100"
-                        android:layout_height="wrap_content"
+                        android:layout_height="@dimen/sp_100"
                         android:layout_gravity="center"
                         android:src="@drawable/instagram_logo" />
                 </LinearLayout>
@@ -139,10 +140,11 @@
                                 android:paddingTop="20sp">
 
                                 <TextView
+                                    android:id="@+id/totalPosts"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
-                                    android:text="@string/_286"
+                                    android:text="0"
                                     android:textColor="@color/black"
                                     android:textSize="20sp"
                                     android:textStyle="bold" />
@@ -164,10 +166,11 @@
                                 android:paddingTop="20sp">
 
                                 <TextView
+                                    android:id="@+id/followers"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
-                                    android:text="@string/_256"
+                                    android:text="0"
                                     android:textColor="@color/black"
                                     android:textSize="20sp"
                                     android:textStyle="bold" />
@@ -189,10 +192,11 @@
                                 android:paddingTop="20sp">
 
                                 <TextView
+                                    android:id="@+id/followings"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
-                                    android:text="@string/_276"
+                                    android:text="0"
                                     android:textColor="@color/black"
                                     android:textSize="20sp"
                                     android:textStyle="bold" />
@@ -229,14 +233,6 @@
                 android:layout_margin="10dp"
                 android:layout_marginStart="10dp"
                 android:text="@string/android_java_kotlin_developer"
-                android:textColor="@android:color/black"
-                android:textSize="16sp"
-                />
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:text="Birthaday | 28 Jan 1998"
                 android:textColor="@android:color/black"
                 android:textSize="16sp"
                 />
