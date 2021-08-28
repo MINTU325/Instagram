@@ -26,20 +26,14 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         val myPreference = MyPreference(this.requireContext())
         var email = myPreference.getEmail()
         etEmail.setText(email)
-
-
         tvSignup.setOnClickListener {
             navController.navigate(R.id.action_loginFragment2_to_signupFragment)
         }
 
         btnLogin.setOnClickListener {
-
             myPreference.setEmail(etEmail.text.toString())
             if (isValid()){
-
-
                 login()
-
             }
             else
                 Toast.makeText(context, "Please fill up details correctly", Toast.LENGTH_SHORT)

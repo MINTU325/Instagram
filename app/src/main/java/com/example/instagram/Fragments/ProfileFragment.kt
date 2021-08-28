@@ -18,9 +18,9 @@ import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_profile.*
 
 class ProfileFragment : Fragment() {
-    private lateinit var ViewPageerr: ViewPager2
-    private lateinit var tabLayout: TabLayout
-    private lateinit var pagerAdapter: ProfileViewPagerAdapter
+//    private lateinit var ViewPageerr: ViewPager2
+//    private lateinit var tabLayout: TabLayout
+//    private lateinit var pagerAdapter: ProfileViewPagerAdapter
 
     private var ImageUri3: Uri? = null
     override fun onCreateView(
@@ -37,7 +37,6 @@ class ProfileFragment : Fragment() {
             val intent = CropImage.activity(ImageUri3)
                 .getIntent(requireContext())
             startActivityForResult(intent, CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE)
-
 
 //            val fm :FragmentManager = childFragmentManager
 //            pagerAdapter = ProfileViewPagerAdapter(fm, lifecycle)
