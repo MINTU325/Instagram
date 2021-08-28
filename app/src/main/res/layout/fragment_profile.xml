@@ -83,7 +83,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="20dp"
             android:orientation="vertical">
 
             <!--Header section-->
@@ -99,13 +99,14 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_margin="5dp"
+                    android:padding="@dimen/dp_1"
                     android:layout_weight="1"
                     android:gravity="start">
 
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/myprofile_image"
-                        android:layout_width="@dimen/sp_100"
-                        android:layout_height="@dimen/sp_100"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:layout_gravity="center"
                         android:src="@drawable/instagram_logo" />
                 </LinearLayout>
@@ -155,7 +156,7 @@
                                     android:layout_gravity="center"
                                     android:text="@string/posts"
                                     android:textColor="@color/black"
-                                    android:textSize="18sp" />
+                                    android:textSize="16sp" />
                             </LinearLayout>
 
                             <LinearLayout
@@ -181,7 +182,7 @@
                                     android:layout_gravity="center"
                                     android:text="@string/followers"
                                     android:textColor="@color/black"
-                                    android:textSize="18sp" />
+                                    android:textSize="16sp" />
                             </LinearLayout>
 
                             <LinearLayout
@@ -207,7 +208,7 @@
                                     android:layout_gravity="center"
                                     android:text="@string/following"
                                     android:textColor="@color/black"
-                                    android:textSize="18sp" />
+                                    android:textSize="16sp" />
                             </LinearLayout>
                         </LinearLayout>
 
