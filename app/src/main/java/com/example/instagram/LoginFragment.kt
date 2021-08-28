@@ -3,11 +3,9 @@ package com.example.instagram
 import android.content.Intent
 import android.os.Bundle
 import android.util.Patterns
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
@@ -25,14 +23,24 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val navController = Navigation.findNavController(view)
+        val myPreference = MyPreference(this.requireContext())
+        var email = myPreference.getEmail()
+        etEmail.setText(email)
+
 
         tvSignup.setOnClickListener {
             navController.navigate(R.id.action_loginFragment2_to_signupFragment)
         }
 
         btnLogin.setOnClickListener {
-            if (isValid())
+
+            myPreference.setEmail(etEmail.text.toString())
+            if (isValid()){
+
+
                 login()
+
+            }
             else
                 Toast.makeText(context, "Please fill up details correctly", Toast.LENGTH_SHORT)
                     .show()
@@ -55,13 +63,13 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
     private fun getDataFromDatabase() {
         ListsPassingHelper.userDetailsList.clear()
-        databaseReference.addValueEventListener(object : ValueEventListener{
+        databaseReference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                for(userDetails in snapshot.children){
+                for (userDetails in snapshot.children) {
                     ListsPassingHelper.userDetailsList.add(userDetails.getValue(UserDetailsModel::class.java)!!)
                 }
                 Toast.makeText(context, "Login Successful", Toast.LENGTH_SHORT).show()
-                startActivity(Intent(context,MainScreenActivity::class.java))
+                startActivity(Intent(context, MainScreenActivity::class.java))
             }
 
             override fun onCancelled(error: DatabaseError) {

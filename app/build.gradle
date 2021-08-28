@@ -56,7 +56,16 @@ dependencies {
     //Navigation
     implementation 'androidx.navigation:navigation-fragment-ktx:2.3.5'
     implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'
+    // shahred Preferencs
+    implementation 'androidx.datastore:datastore-preferences:1.0.0-rc01'
+    implementation 'androidx.datastore:datastore-preferences-core:1.0.0-rc01'
+    // Coroutines
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.0'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.0'
 
+    // Coroutine Lifecycle Scopes
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.3.1"
 
    // fire base
     implementation platform('com.google.firebase:firebase-bom:28.4.0')
