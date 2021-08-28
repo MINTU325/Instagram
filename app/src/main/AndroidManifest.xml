@@ -1,23 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.instagram">
 
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
+
     <application
         android:allowBackup="true"
-        android:icon="@drawable/instagram_logo"
+        android:icon="@drawable/instagram_logo1"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Instagram">
-        <activity android:name=".StatusActivity"> </activity>
-        <activity android:name=".AddPostActivity" > </activity>
-        <activity android:name=".SignupActivity" > </activity>
-        <activity android:name=".MainActivity"> </activity>
-        <activity android:name=".MainScreenActivity" >
+        <activity android:name=".Fragments.EditProfileActivity" />
+        <activity android:name=".StatusActivity" />
+        <activity android:name=".AddPostActivity" />
+        <activity android:name=".SignupActivity" />
+        <activity android:name=".MainScreenActivity" />
+        <activity android:name=".MainActivity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

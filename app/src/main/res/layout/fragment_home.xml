@@ -18,13 +18,15 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dp_1">
 
                 <ImageView
+                    style="bold"
                     android:layout_width="100dp"
                     android:layout_height="50dp"
-                    android:layout_alignParentLeft="true"
-                    android:contentDescription="TODO"
+                    android:layout_alignParentStart="true"
+                    android:contentDescription="Instagram Logo"
                     android:src="@drawable/instagram" />
 
                 <ImageView
@@ -32,17 +34,19 @@
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
                     android:layout_marginTop="10dp"
+                    android:layout_marginEnd="@dimen/dp_10"
                     android:layout_toStartOf="@id/btnMessage"
-                    android:contentDescription="TODO"
+                    android:contentDescription="Add Post"
                     android:src="@drawable/add" />
 
                 <ImageView
                     android:id="@+id/btnMessage"
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
-                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
                     android:layout_marginTop="10dp"
-                    android:contentDescription="TODO"
+                    android:layout_marginEnd="@dimen/dp_10"
+                    android:contentDescription="Send"
                     android:src="@drawable/send_icon" />
 
             </RelativeLayout>
@@ -52,90 +56,209 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <HorizontalScrollView
-        android:id="@+id/Hscroll"
+        android:id="@+id/HScrollView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/app_bar_layout_home"
         android:scrollbarSize="0dp">
 
-        <LinearLayout
+        <RelativeLayout
             android:id="@+id/layoutStatus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_gravity="start"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="@dimen/dp_5">
 
             <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/ivimage1"
+                android:id="@+id/ivImage1"
                 android:layout_width="@dimen/dp_80"
                 android:layout_height="@dimen/dp_80"
-                android:layout_margin="10dp"
                 android:padding="@dimen/dp_8"
                 android:src="@drawable/profile"
                 app:civ_border_color="#B8B1B1"
                 app:civ_border_width="2dp" />
 
+            <TextView
+                android:layout_width="@dimen/dp_80"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ivImage1"
+                android:gravity="center"
+                android:text="Yash"
+                android:textStyle="bold" />
+
             <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/ivimage2"
+                android:id="@+id/ivImage2"
                 android:layout_width="@dimen/dp_80"
                 android:layout_height="@dimen/dp_80"
-                android:layout_margin="10dp"
+                android:layout_toEndOf="@id/ivImage1"
                 android:padding="@dimen/dp_8"
                 android:src="@drawable/profile"
                 app:civ_border_color="#ED4E1C"
                 app:civ_border_width="2dp" />
 
+            <TextView
+                android:layout_width="@dimen/dp_80"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ivImage2"
+                android:layout_toEndOf="@id/ivImage1"
+                android:gravity="center"
+                android:text="Mintu"
+                android:textStyle="bold" />
+
             <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/ivimage3"
+                android:id="@+id/ivImage3"
                 android:layout_width="@dimen/dp_80"
                 android:layout_height="@dimen/dp_80"
-                android:layout_margin="10dp"
+                android:layout_toEndOf="@id/ivImage2"
                 android:padding="@dimen/dp_8"
                 android:src="@drawable/profile"
                 app:civ_border_color="#ED4E1C"
                 app:civ_border_width="2dp" />
 
+            <TextView
+                android:layout_width="@dimen/dp_80"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ivImage3"
+                android:layout_toEndOf="@id/ivImage2"
+                android:gravity="center"
+                android:text="Masai"
+                android:textStyle="bold" />
+
             <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/ivimage4"
+                android:id="@+id/ivImage4"
                 android:layout_width="@dimen/dp_80"
                 android:layout_height="@dimen/dp_80"
-                android:layout_margin="10dp"
+                android:layout_toEndOf="@id/ivImage3"
                 android:padding="@dimen/dp_8"
                 android:src="@drawable/profile"
                 app:civ_border_color="#ED4E1C"
                 app:civ_border_width="2dp" />
 
+            <TextView
+                android:layout_width="@dimen/dp_80"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ivImage3"
+                android:layout_toEndOf="@id/ivImage3"
+                android:gravity="center"
+                android:text="Virat"
+                android:textStyle="bold" />
+
             <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/ivimage5"
+                android:id="@+id/ivImage5"
                 android:layout_width="@dimen/dp_80"
                 android:layout_height="@dimen/dp_80"
-                android:layout_margin="10dp"
+                android:layout_toEndOf="@id/ivImage4"
                 android:padding="@dimen/dp_8"
                 android:src="@drawable/profile"
                 app:civ_border_color="#ED4E1C"
                 app:civ_border_width="2dp" />
 
+            <TextView
+                android:layout_width="@dimen/dp_80"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ivImage4"
+                android:layout_toEndOf="@id/ivImage4"
+                android:gravity="center"
+                android:text="RjSamrat"
+                android:textStyle="bold" />
+
             <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/ivimage6"
+                android:id="@+id/ivImage6"
                 android:layout_width="@dimen/dp_80"
                 android:layout_height="@dimen/dp_80"
-                android:layout_margin="10dp"
+                android:layout_toEndOf="@id/ivImage5"
                 android:padding="@dimen/dp_8"
                 android:src="@drawable/profile"
                 app:civ_border_color="#ED4E1C"
                 app:civ_border_width="2dp" />
 
+            <TextView
+                android:layout_width="@dimen/dp_80"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ivImage5"
+                android:layout_toEndOf="@id/ivImage5"
+                android:gravity="center"
+                android:text="TrollKatta"
+                android:textStyle="bold" />
+
             <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/ivimage7"
+                android:id="@+id/ivImage7"
                 android:layout_width="@dimen/dp_80"
                 android:layout_height="@dimen/dp_80"
-                android:layout_margin="10dp"
+                android:layout_toEndOf="@id/ivImage6"
                 android:padding="@dimen/dp_8"
                 android:src="@drawable/profile"
                 app:civ_border_color="#ED4E1C"
                 app:civ_border_width="2dp" />
 
-        </LinearLayout>
+            <TextView
+                android:layout_width="@dimen/dp_80"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ivImage6"
+                android:layout_toEndOf="@id/ivImage6"
+                android:gravity="center"
+                android:text="LoveSide"
+                android:textStyle="bold" />
 
+            <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/ivImage8"
+                android:layout_width="@dimen/dp_80"
+                android:layout_height="@dimen/dp_80"
+                android:layout_toEndOf="@id/ivImage7"
+                android:padding="@dimen/dp_8"
+                android:src="@drawable/profile"
+                app:civ_border_color="#B8B1B1"
+                app:civ_border_width="2dp" />
+
+            <TextView
+                android:layout_width="@dimen/dp_80"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ivImage7"
+                android:layout_toEndOf="@id/ivImage7"
+                android:gravity="center"
+                android:text="MIT"
+                android:textStyle="bold" />
+
+            <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/ivImage9"
+                android:layout_width="@dimen/dp_80"
+                android:layout_height="@dimen/dp_80"
+                android:layout_toEndOf="@id/ivImage8"
+                android:padding="@dimen/dp_8"
+                android:src="@drawable/profile"
+                app:civ_border_color="#ED4E1C"
+                app:civ_border_width="2dp" />
+
+            <TextView
+                android:layout_width="@dimen/dp_80"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ivImage8"
+                android:layout_toEndOf="@id/ivImage8"
+                android:gravity="center"
+                android:text="Legend_01"
+                android:textStyle="bold" />
+
+            <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/ivImage10"
+                android:layout_width="@dimen/dp_80"
+                android:layout_height="@dimen/dp_80"
+                android:layout_toEndOf="@id/ivImage9"
+                android:padding="@dimen/dp_8"
+                android:src="@drawable/instagram_logo"
+                app:civ_border_color="#ED4E1C"
+                app:civ_border_width="2dp" />
+
+            <TextView
+                android:layout_width="@dimen/dp_80"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ivImage9"
+                android:layout_toEndOf="@id/ivImage9"
+                android:gravity="center"
+                android:text="Bollywood"
+                android:textStyle="bold" />
+        </RelativeLayout>
 
     </HorizontalScrollView>
 
@@ -143,5 +266,9 @@
         android:id="@+id/rvRecyclerView_Home"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/Hscroll" />
+        android:layout_below="@id/HScrollView"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="0dp" />
 </RelativeLayout>

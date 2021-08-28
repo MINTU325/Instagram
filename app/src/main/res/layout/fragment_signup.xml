@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white"
     tools:context=".SignupFragment">
 
@@ -11,21 +11,21 @@
         android:id="@+id/ivSignupProfile"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:src="@drawable/signup_profile"
         android:layout_marginTop="50dp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:src="@drawable/instagram_logo"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/etFullName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/gray"
-        android:hint="Full name"
-        android:padding="15dp"
         android:layout_margin="20dp"
+        android:background="@drawable/rounded_button3"
+        android:hint="Full name"
         android:inputType="text"
+        android:padding="12dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ivSignupProfile" />
 
@@ -33,10 +33,10 @@
         android:id="@+id/etUserName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/gray"
-        android:hint="Username"
-        android:padding="15dp"
         android:layout_margin="20dp"
+        android:background="@drawable/rounded_button3"
+        android:hint="Username"
+        android:padding="12dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etFullName" />
 
@@ -44,10 +44,10 @@
         android:id="@+id/etEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/gray"
-        android:hint="Email"
-        android:padding="15dp"
         android:layout_margin="20dp"
+        android:background="@drawable/rounded_button3"
+        android:hint="Phone number or email"
+        android:padding="12dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etUserName" />
 
@@ -55,11 +55,11 @@
         android:id="@+id/etPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/gray"
+        android:layout_margin="20dp"
+        android:background="@drawable/rounded_button3"
         android:hint="Password"
         android:inputType="textPassword"
-        android:padding="15dp"
-        android:layout_margin="20dp"
+        android:padding="12dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etEmail" />
 
@@ -67,43 +67,51 @@
         android:id="@+id/btnSignup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etPassword"
-        android:background="@color/blue"
         android:layout_margin="20dp"
-        android:text="Signup"
+        android:background="@drawable/rounded_button2"
+        android:gravity="center"
+        android:padding="12dp"
+        android:text="Sign Up"
+        android:textAllCaps="false"
         android:textColor="@color/white"
-        android:textAllCaps="false"/>
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etPassword" />
 
     <View
         android:id="@+id/vBottom"
         android:layout_width="match_parent"
         android:layout_height="1dp"
+        android:layout_marginBottom="50dp"
         android:background="@color/gray"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="50dp"/>
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/tvAlready"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="@dimen/dp_10"
+        android:gravity="center_vertical"
         android:text="Already have an account? "
-        app:layout_constraintTop_toBottomOf="@+id/vBottom"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginEnd="50dp"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/vBottom" />
 
     <TextView
         android:id="@+id/tvLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dp_10"
+        android:gravity="center"
         android:text="Log in."
         android:textColor="@color/dark_blue"
         android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@+id/vBottom"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tvAlready"/>
+        app:layout_constraintStart_toEndOf="@+id/tvAlready"
+        app:layout_constraintTop_toBottomOf="@+id/vBottom" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
