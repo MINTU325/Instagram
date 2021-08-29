@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     android:layout_height="match_parent"
     tools:context=".Fragments.ProfileFragment">
 
@@ -31,6 +33,7 @@
                     android:src="@drawable/lock" />
 
                 <TextView
+                    android:id="@+id/profileUsername"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="50dp"
@@ -80,7 +83,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="60dp"
             android:orientation="vertical">
 
             <!--Header section-->
@@ -100,9 +102,9 @@
                     android:gravity="start">
 
                     <de.hdodenhof.circleimageview.CircleImageView
-                        android:id="@+id/profile_image"
-                        android:layout_width="@dimen/sp_100"
-                        android:layout_height="wrap_content"
+                        android:id="@+id/myprofile_image"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:layout_gravity="center"
                         android:src="@drawable/instagram_logo" />
                 </LinearLayout>
@@ -137,10 +139,11 @@
                                 android:paddingTop="20sp">
 
                                 <TextView
+                                    android:id="@+id/totalPosts"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
-                                    android:text="@string/_286"
+                                    android:text="5"
                                     android:textColor="@color/black"
                                     android:textSize="20sp"
                                     android:textStyle="bold" />
@@ -151,7 +154,7 @@
                                     android:layout_gravity="center"
                                     android:text="@string/posts"
                                     android:textColor="@color/black"
-                                    android:textSize="18sp" />
+                                    android:textSize="14sp" />
                             </LinearLayout>
 
                             <LinearLayout
@@ -162,10 +165,11 @@
                                 android:paddingTop="20sp">
 
                                 <TextView
+                                    android:id="@+id/followers"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
-                                    android:text="@string/_256"
+                                    android:text="3"
                                     android:textColor="@color/black"
                                     android:textSize="20sp"
                                     android:textStyle="bold" />
@@ -176,7 +180,7 @@
                                     android:layout_gravity="center"
                                     android:text="@string/followers"
                                     android:textColor="@color/black"
-                                    android:textSize="18sp" />
+                                    android:textSize="14sp" />
                             </LinearLayout>
 
                             <LinearLayout
@@ -187,10 +191,11 @@
                                 android:paddingTop="20sp">
 
                                 <TextView
+                                    android:id="@+id/followings"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
-                                    android:text="@string/_276"
+                                    android:text="2"
                                     android:textColor="@color/black"
                                     android:textSize="20sp"
                                     android:textStyle="bold" />
@@ -201,7 +206,7 @@
                                     android:layout_gravity="center"
                                     android:text="@string/following"
                                     android:textColor="@color/black"
-                                    android:textSize="18sp" />
+                                    android:textSize="14sp" />
                             </LinearLayout>
                         </LinearLayout>
 
@@ -228,38 +233,39 @@
                 android:layout_marginStart="10dp"
                 android:text="@string/android_java_kotlin_developer"
                 android:textColor="@android:color/black"
-                android:textSize="17sp"
-                android:textStyle="bold" />
+                android:textSize="16sp"
+                />
 
             <RelativeLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center">
 
                 <Button
                     android:id="@+id/EditProfile"
-                    android:layout_width="340dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:background="@drawable/rounded_button"
                     android:backgroundTint="@color/white"
                     android:text="@string/edit_profile"
+                    android:layout_marginVertical="@dimen/dp_10"
                     android:textAllCaps="false"
                     android:textColor="@color/black"
-                    android:textSize="16sp"
+                    android:textSize="14sp"
                     android:textStyle="bold" />
 
-                <ImageView
-                    android:id="@+id/dropdown2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="45dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_toEndOf="@+id/EditProfile"
-                    android:contentDescription="@string/down_arrow"
-                    android:paddingTop="2sp"
-                    android:src="@drawable/down_arrow" />
+<!--                <ImageView-->
+<!--                    android:id="@+id/dropdown2"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="45dp"-->
+<!--                    android:layout_alignParentEnd="true"-->
+<!--                    android:layout_marginStart="5dp"-->
+<!--                    android:layout_marginEnd="10dp"-->
+<!--                    android:layout_toEndOf="@+id/EditProfile"-->
+<!--                    android:contentDescription="@string/down_arrow"-->
+<!--                    android:paddingTop="2sp"-->
+<!--                    android:src="@drawable/down_arrow" />-->
             </RelativeLayout>
 
             <!--Story Section Here-->
@@ -269,61 +275,206 @@
                 android:layout_marginStart="3dp"
                 android:layout_marginEnd="7dp"
                 android:scrollbars="none">
-
                 <LinearLayout
                     android:layout_width="wrap_content"
+                    android:layout_marginVertical="@dimen/dp_5"
                     android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    >
 
-                    <include layout="@layout/fragment_profile_layout_view_story" />
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:orientation="vertical"
+                        >
 
-                    <include layout="@layout/fragment_profile_layout_view_story" />
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:layout_width="@dimen/sp_70"
+                            android:layout_height="@dimen/sp_70"
+                            android:layout_gravity="center"
+                            android:id="@+id/imageIV1"
+                            app:civ_border_color="@color/gray"
+                            app:civ_border_width="@dimen/dp_2"
+                            android:src="@drawable/instagram_logo" />
 
-                    <include layout="@layout/fragment_profile_layout_view_story" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_margin="5dp"
+                            android:text="ybansal"
+                            android:textColor="@color/black"
+                            android:textSize="15sp"
+                            />
+                    </LinearLayout>
 
-                    <include layout="@layout/fragment_profile_layout_view_story" />
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:orientation="vertical"
+                        >
 
-                    <include layout="@layout/fragment_profile_layout_view_story" />
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:layout_width="@dimen/sp_70"
+                            android:layout_height="@dimen/sp_70"
+                            android:layout_gravity="center"
+                            android:id="@+id/imageIV2"
+                            app:civ_border_color="@color/gray"
+                            app:civ_border_width="@dimen/dp_2"
+                            android:src="@drawable/instagram_logo" />
 
-                    <include layout="@layout/fragment_profile_layout_view_story" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_margin="5dp"
+                            android:text="rvcjinsta"
+                            android:textColor="@color/black"
+                            android:textSize="15sp"
+                            />
+                    </LinearLayout>
 
-                    <include layout="@layout/fragment_profile_layout_view_story" />
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:orientation="vertical"
+                        >
 
-                    <include layout="@layout/fragment_profile_layout_view_story" />
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:layout_width="@dimen/sp_70"
+                            android:layout_height="@dimen/sp_70"
+                            android:layout_gravity="center"
+                            app:civ_border_color="@color/gray"
+                            app:civ_border_width="@dimen/dp_2"
+                            android:id="@+id/imageIV3"
+                            android:src="@drawable/instagram_logo" />
 
-                    <include layout="@layout/fragment_profile_layout_view_story" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_margin="5dp"
+                            android:text="rohitsaini"
+                            android:textColor="@color/black"
+                            android:textSize="15sp"
+                            />
+                    </LinearLayout>
 
-                    <include layout="@layout/fragment_profile_layout_view_story" />
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:orientation="vertical"
+                        >
 
-                    <include layout="@layout/fragment_profile_layout_view_story" />
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:layout_width="@dimen/sp_70"
+                            android:layout_height="@dimen/sp_70"
+                            android:layout_gravity="center"
+                            android:id="@+id/imageIV4"
+                            app:civ_border_color="@color/gray"
+                            app:civ_border_width="@dimen/dp_2"
+                            android:src="@drawable/instagram_logo" />
 
-                    <include layout="@layout/fragment_profile_layout_view_story" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_margin="5dp"
+                            android:text="mintusaini34"
+                            android:textColor="@color/black"
+                            android:textSize="15sp"
+                            />
+                    </LinearLayout>
 
-                    <include layout="@layout/fragment_profile_layout_view_story" />
 
-                    <include layout="@layout/fragment_profile_layout_view_story" />
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:orientation="vertical"
+                        >
 
-                    <include layout="@layout/fragment_profile_layout_view_story" />
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:layout_width="@dimen/sp_70"
+                            android:layout_height="@dimen/sp_70"
+                            android:layout_gravity="center"
+                            android:id="@+id/imageIV5"
+                            app:civ_border_color="@color/gray"
+                            app:civ_border_width="@dimen/dp_2"
+                            android:src="@drawable/instagram_logo" />
 
-                    <include layout="@layout/fragment_profile_layout_view_story" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_margin="5dp"
+                            android:text="meghansharma"
+                            android:textColor="@color/black"
+                            android:textSize="15sp"
+                            />
+                    </LinearLayout>
 
-                    <include layout="@layout/fragment_profile_layout_view_story" />
 
-                    <include layout="@layout/fragment_profile_layout_view_story" />
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:orientation="vertical"
+                        >
 
-                    <include layout="@layout/fragment_profile_layout_view_story" />
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:layout_width="@dimen/sp_70"
+                            android:layout_height="@dimen/sp_70"
+                            android:layout_gravity="center"
+                            android:id="@+id/imageIV6"
+                            app:civ_border_color="@color/gray"
+                            app:civ_border_width="@dimen/dp_2"
+                            android:src="@drawable/instagram_logo" />
 
-                    <include layout="@layout/fragment_profile_layout_view_story" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_margin="5dp"
+                            android:text="sandeep1098"
+                            android:textColor="@color/black"
+                            android:textSize="15sp"
+                            />
+                    </LinearLayout>
 
-                    <include layout="@layout/fragment_profile_layout_view_story" />
 
-                    <include layout="@layout/fragment_profile_layout_view_story" />
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:orientation="vertical"
+                        >
 
-                    <include layout="@layout/fragment_profile_layout_view_story" />
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:layout_width="@dimen/sp_70"
+                            android:layout_height="@dimen/sp_70"
+                            android:layout_gravity="center"
+                            android:id="@+id/imageIV7"
+                            app:civ_border_color="@color/gray"
+                            app:civ_border_width="@dimen/dp_2"
+                            android:src="@drawable/instagram_logo" />
 
-                    <include layout="@layout/fragment_profile_layout_view_story" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_margin="5dp"
+                            android:text="ybansal12"
+                            android:textColor="@color/black"
+                            android:textSize="15sp"
+                            />
+                    </LinearLayout>
                 </LinearLayout>
+
             </HorizontalScrollView>
 
             <LinearLayout
@@ -363,4 +514,15 @@
         </LinearLayout>
     </ScrollView>
 
-</FrameLayout>
+<!--    <com.google.android.material.tabs.TabLayout-->
+<!--        android:id="@+id/tabLayout"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content" />-->
+
+<!--    <androidx.viewpager2.widget.ViewPager2-->
+<!--        android:id="@+id/ViewPageerr"-->
+<!--        android:layout_below="@id/tabLayout"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"/>-->
+
+</LinearLayout>

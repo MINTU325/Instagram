@@ -9,11 +9,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
-import com.example.instagram.AddPostActivity
+import com.example.instagram.*
 import com.example.instagram.HomeFragment.PostAdapter
-import com.example.instagram.R
-import com.example.instagram.StatusActivity
-import com.example.instagram.UserPostsModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -34,6 +31,8 @@ class HomeFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
 
+        ListsPassingHelper.postImagesUrl.clear()
+
         databaseReference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 for (uid in snapshot.children) {
@@ -41,6 +40,7 @@ class HomeFragment : Fragment() {
                         var userPostsModel: UserPostsModel =
                             postId.getValue(UserPostsModel::class.java)!!
                         addToList(userPostsModel)
+                        ListsPassingHelper.postImagesUrl.add(userPostsModel.image.toString())
                     }
                 }
             }

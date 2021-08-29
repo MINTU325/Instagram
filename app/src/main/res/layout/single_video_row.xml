@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -8,17 +9,61 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
+
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_60"
+            android:background="@color/white"
+            android:backgroundTint="#00000000"
+            android:paddingTop="@dimen/dp_10"
+            android:layout_marginTop="@dimen/dp_10"
+            tools:ignore="MissingConstraints">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:layout_alignParentLeft="true"
+                    android:contentDescription="TODO"
+                    android:text="Reels"
+                    android:paddingTop="@dimen/dp_10"
+                    android:textColor="@color/white"
+                    android:textSize="21sp"
+                    android:textStyle="bold" />
+
+
+
+                <TextView
+                    android:id="@+id/btnMessage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:padding="@dimen/dp_1"
+                    android:layout_marginRight="@dimen/dp_20"
+                    android:layout_alignParentRight="true"
+                    android:drawableStart="@drawable/ic_camera"
+                    android:src="@drawable/ic_camera"
+                    tools:ignore="RelativeOverlap" />
+
+            </RelativeLayout>
+
+        </androidx.appcompat.widget.Toolbar>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="120dp">
+        android:layout_marginTop="220dp">
 
 
         <ImageView
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_alignParentEnd="true"
-            android:layout_marginTop="290dp"
+            android:layout_marginTop="120dp"
+            android:id="@+id/herticon"
             android:layout_marginEnd="20dp"
             android:src="@drawable/ic_heart_like_love_icon" />
 
@@ -26,9 +71,11 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="330dp"
+            android:layout_marginTop="10dp"
             android:paddingEnd="25dp"
             android:text="353k"
+            android:id="@+id/likescount"
+            android:layout_below="@id/herticon"
             android:textAlignment="textEnd"
             android:textColor="@color/white"
             android:textSize="10sp" />
@@ -36,8 +83,10 @@
         <ImageView
             android:layout_width="30dp"
             android:layout_height="30dp"
+            android:id="@+id/messageicon"
+            android:layout_marginTop="@dimen/dp_20"
+            android:layout_below="@id/likescount"
             android:layout_alignParentEnd="true"
-            android:layout_marginTop="370dp"
             android:layout_marginEnd="20dp"
             android:src="@drawable/ic_message" />
 
@@ -46,9 +95,10 @@
             android:id="@+id/messcont"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="410dp"
             android:paddingEnd="25dp"
             android:text="3.5k"
+            android:layout_below="@id/messageicon"
+            android:layout_marginTop="@dimen/dp_10"
             android:textAlignment="textEnd"
             android:textColor="@color/white"
             android:textSize="10sp" />
@@ -60,9 +110,9 @@
             android:layout_height="30dp"
             android:layout_below="@id/messcont"
             android:layout_alignParentEnd="true"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
-            android:src="@drawable/ic_share" />
+            android:src="@drawable/ic_sharewhite" />
 
         <TextView
             android:layout_width="match_parent"
@@ -71,9 +121,19 @@
             android:layout_marginTop="10dp"
             android:paddingEnd="25dp"
             android:text="23k"
+            android:id="@+id/sharecount"
             android:textAlignment="textEnd"
             android:textColor="@color/white"
             android:textSize="10sp" />
+        <ImageView
+            android:id="@+id/dots"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_below="@id/sharecount"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:src="@drawable/ic_dots" />
 
         <ProgressBar
             android:id="@+id/videoProgressBar"
@@ -82,62 +142,86 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="180dp" />
 
+        <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/ivimage1"
+            android:layout_width="@dimen/dp_35"
+            android:layout_height="@dimen/dp_35"
+            android:padding="@dimen/dp_5"
+            android:layout_marginTop="@dimen/dp_10"
+            android:layout_below="@id/dots"
+            android:src="@drawable/profile"
+            app:civ_border_color="#F26539"
+            android:layout_marginStart="@dimen/dp_20"
+            app:civ_border_width="1dp" />
 
         <TextView
             android:id="@+id/textUserName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/sharevideo"
-            android:paddingStart="30dp"
+            android:layout_below="@id/dots"
             android:scrollHorizontally="true"
             android:singleLine="true"
+            android:layout_toEndOf="@id/ivimage1"
+            android:textStyle="bold"
             android:text="Username"
+            android:layout_marginTop="@dimen/dp_20"
             android:textColor="@color/white"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            android:textSize="14sp"
+            />
 
         <TextView
             android:id="@+id/tvFollow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/sharevideo"
+            android:layout_below="@id/dots"
             android:layout_toEndOf="@id/textUserName"
-            android:paddingStart="30dp"
             android:scrollHorizontally="true"
             android:singleLine="true"
-            android:text=".Follow"
+            android:text=" .Follow"
+            android:textStyle="bold"
+            android:layout_marginTop="@dimen/dp_20"
             android:textColor="@color/white"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            android:textSize="14sp"
+            />
 
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/textUserName"
-            android:paddingStart="30dp"
+            android:paddingStart="20dp"
+            android:layout_marginTop="@dimen/dp_10"
             android:id="@+id/textDescription"
-            android:text="Create HotShot with this sound"
+            android:text="#Reels #CoolPics"
             android:textColor="@color/white" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/textUserName"
-            android:paddingStart="30dp"
-            android:layout_toEndOf="@id/textVideoDescription"
-            android:text="more"
+            android:layout_toEndOf="@id/textDescription"
+            android:text=" .more"
+            android:layout_marginTop="@dimen/dp_10"
             android:textColor="#D2CBCB" />
 
 
         <TextView
             android:id="@+id/textVideoDescription"
-            android:layout_width="220dp"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_below="@id/textDescription"
-            android:paddingStart="30dp"
+            android:paddingStart="20dp"
             android:scrollHorizontally="true"
             android:singleLine="true"
             android:text="Audio by Singer Name"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textDescription"
+            android:singleLine="true"
+            android:layout_toEndOf="@id/textVideoDescription"
+            android:text=" .Orignal Audio"
             android:textColor="@color/white"
             android:textSize="14sp" />
     </RelativeLayout>

@@ -47,7 +47,7 @@ class ReelsFragment : Fragment() {
         )
         videoList.add(
             videoModel(
-                "Rahil.23",
+                "Rahul.23",
                 "# reels, #CoolPics",
                 "https://firebasestorage.googleapis.com/v0/b/my-project-firebase-b3527.appspot.com/o/new%2FSenorita.mp4?alt=media&token=9c637724-934a-4df2-8e51-a401d5577f39"
             )
