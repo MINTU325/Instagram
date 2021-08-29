@@ -83,7 +83,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="60dp"
             android:orientation="vertical">
 
             <!--Header section-->
@@ -104,8 +103,8 @@
 
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/myprofile_image"
-                        android:layout_width="@dimen/sp_100"
-                        android:layout_height="@dimen/sp_100"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:layout_gravity="center"
                         android:src="@drawable/instagram_logo" />
                 </LinearLayout>
@@ -144,7 +143,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
-                                    android:text="0"
+                                    android:text="5"
                                     android:textColor="@color/black"
                                     android:textSize="20sp"
                                     android:textStyle="bold" />
@@ -155,7 +154,7 @@
                                     android:layout_gravity="center"
                                     android:text="@string/posts"
                                     android:textColor="@color/black"
-                                    android:textSize="18sp" />
+                                    android:textSize="14sp" />
                             </LinearLayout>
 
                             <LinearLayout
@@ -170,7 +169,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
-                                    android:text="0"
+                                    android:text="3"
                                     android:textColor="@color/black"
                                     android:textSize="20sp"
                                     android:textStyle="bold" />
@@ -181,7 +180,7 @@
                                     android:layout_gravity="center"
                                     android:text="@string/followers"
                                     android:textColor="@color/black"
-                                    android:textSize="18sp" />
+                                    android:textSize="14sp" />
                             </LinearLayout>
 
                             <LinearLayout
@@ -196,7 +195,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
-                                    android:text="0"
+                                    android:text="2"
                                     android:textColor="@color/black"
                                     android:textSize="20sp"
                                     android:textStyle="bold" />
@@ -207,7 +206,7 @@
                                     android:layout_gravity="center"
                                     android:text="@string/following"
                                     android:textColor="@color/black"
-                                    android:textSize="18sp" />
+                                    android:textSize="14sp" />
                             </LinearLayout>
                         </LinearLayout>
 
@@ -304,7 +303,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_margin="5dp"
-                            android:text="Cool Day"
+                            android:text="ybansal"
                             android:textColor="@color/black"
                             android:textSize="15sp"
                             />
@@ -331,7 +330,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_margin="5dp"
-                            android:text="Cool Day"
+                            android:text="rvcjinsta"
                             android:textColor="@color/black"
                             android:textSize="15sp"
                             />
@@ -358,7 +357,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_margin="5dp"
-                            android:text="Cool Day"
+                            android:text="rohitsaini"
                             android:textColor="@color/black"
                             android:textSize="15sp"
                             />
@@ -385,7 +384,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_margin="5dp"
-                            android:text="Cool Day"
+                            android:text="mintusaini34"
                             android:textColor="@color/black"
                             android:textSize="15sp"
                             />
@@ -413,7 +412,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_margin="5dp"
-                            android:text="Cool Day"
+                            android:text="meghansharma"
                             android:textColor="@color/black"
                             android:textSize="15sp"
                             />
@@ -441,7 +440,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_margin="5dp"
-                            android:text="Cool Day"
+                            android:text="sandeep1098"
                             android:textColor="@color/black"
                             android:textSize="15sp"
                             />
@@ -469,7 +468,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_margin="5dp"
-                            android:text="Cool Day"
+                            android:text="ybansal12"
                             android:textColor="@color/black"
                             android:textSize="15sp"
                             />

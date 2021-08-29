@@ -113,9 +113,9 @@ class ProfileFragment : Fragment() {
     }
 
     private fun setCurrentUserData(){
-        currentUserPostsCount = 0
-        currentUserFollowingsCount = 0
-        currentUserFollowersCount = 0
+        currentUserPostsCount = 5
+        currentUserFollowingsCount = 3
+        currentUserFollowersCount = 2
 
         firebaseDatabase.getReference("follows").child(currentUserUid.toString())
             .child("followings").addValueEventListener(object : ValueEventListener{
