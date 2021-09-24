@@ -1,11 +1,8 @@
-package com.example.instagram
+package com.example.instagram.UserSignIn
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import androidx.fragment.app.FragmentTransaction
-import androidx.navigation.Navigation
-import kotlinx.android.synthetic.main.activity_signup.*
+import com.example.instagram.R
 
 class SignupActivity : AppCompatActivity() {
 

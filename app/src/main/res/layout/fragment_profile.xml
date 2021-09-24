@@ -257,17 +257,6 @@
                     android:textSize="14sp"
                     android:textStyle="bold" />
 
-<!--                <ImageView-->
-<!--                    android:id="@+id/dropdown2"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="45dp"-->
-<!--                    android:layout_alignParentEnd="true"-->
-<!--                    android:layout_marginStart="5dp"-->
-<!--                    android:layout_marginEnd="10dp"-->
-<!--                    android:layout_toEndOf="@+id/EditProfile"-->
-<!--                    android:contentDescription="@string/down_arrow"-->
-<!--                    android:paddingTop="2sp"-->
-<!--                    android:src="@drawable/down_arrow" />-->
             </RelativeLayout>
 
             <!--Story Section Here-->

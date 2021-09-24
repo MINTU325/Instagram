@@ -1,4 +1,4 @@
-package com.example.instagram
+package com.example.instagram.UserSignIn
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,6 +7,10 @@ import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
+import com.example.instagram.*
+import com.example.instagram.MOdels.ListsPassingHelper
+import com.example.instagram.MOdels.UserDetailsModel
+import com.example.instagram.SharedPrf.MyPreference
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError

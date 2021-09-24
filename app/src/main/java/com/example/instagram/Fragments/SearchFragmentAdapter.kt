@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.instagram.R
-import com.example.instagram.UserDetailsModel
+import com.example.instagram.MOdels.UserDetailsModel
 
 class SearchFragmentAdapter(
     private val listImage: List<String>,

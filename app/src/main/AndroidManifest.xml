@@ -15,14 +15,16 @@
         android:theme="@style/Theme.Instagram">
         <activity android:name=".StatusActivity"> </activity>
         <activity android:name=".AddPostActivity" > </activity>
-        <activity android:name=".SignupActivity" > </activity>
-        <activity android:name=".MainScreenActivity"> </activity>
-        <activity android:name=".MainActivity" >
+        <activity android:name=".UserSignIn.SignupActivity" > </activity>
+        <activity android:name=".MainScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".UserSignIn.MainActivity" >
+
         </activity>
         <activity
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"

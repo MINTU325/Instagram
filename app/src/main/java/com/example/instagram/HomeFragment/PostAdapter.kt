@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.instagram.R
-import com.example.instagram.UserPostsModel
+import com.example.instagram.MOdels.UserPostsModel
 
 class PostAdapter(private val list : List<UserPostsModel>) : RecyclerView.Adapter<PostViewHolder>() {
 

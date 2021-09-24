@@ -1,4 +1,4 @@
-package com.example.instagram
+package com.example.instagram.UserSignIn
 
 import android.os.Bundle
 import android.util.Patterns
@@ -7,6 +7,8 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import com.example.instagram.R
+import com.example.instagram.MOdels.UserDetailsModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.fragment_signup.*

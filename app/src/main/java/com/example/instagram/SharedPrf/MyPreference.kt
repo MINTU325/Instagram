@@ -1,4 +1,4 @@
-package com.example.instagram
+package com.example.instagram.SharedPrf
 
 import android.content.Context
 

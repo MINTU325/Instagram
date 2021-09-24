@@ -7,10 +7,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.instagram.*
 import com.example.instagram.HomeFragment.PostAdapter
+import com.example.instagram.MOdels.ListsPassingHelper
+import com.example.instagram.MOdels.UserPostsModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -54,6 +57,10 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        btnMessage.setOnClickListener {
+            Toast.makeText(context,"Message Activity is yet to be Implimented",Toast.LENGTH_SHORT).show()
+        }
+
         btnaddPost.setOnClickListener {
             val intent = Intent(context, AddPostActivity::class.java)
             startActivity(intent)

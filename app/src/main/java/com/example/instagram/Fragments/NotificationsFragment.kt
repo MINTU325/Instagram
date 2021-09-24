@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.instagram.NotificationFragment.NotificationFragmentAdapter
 import com.example.instagram.R
-import com.example.instagram.UserPostsModel
+import com.example.instagram.MOdels.UserPostsModel
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase

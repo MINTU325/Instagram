@@ -4,17 +4,16 @@ import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
-import com.example.instagram.ListsPassingHelper
-import com.example.instagram.ProfileViewPager.ProfileViewPagerAdapter
+import com.example.instagram.MOdels.ListsPassingHelper
 import com.example.instagram.R
-import com.example.instagram.UserDetailsModel
+import com.example.instagram.MOdels.UserDetailsModel
 import com.google.android.gms.tasks.Continuation
 import com.google.android.gms.tasks.Task
 import com.google.android.material.tabs.TabLayout
@@ -23,7 +22,6 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageTask
 import com.google.firebase.storage.UploadTask
@@ -34,7 +32,7 @@ import kotlinx.android.synthetic.main.fragment_profile.*
 class ProfileFragment : Fragment() {
     private lateinit var ViewPageerr: ViewPager2
     private lateinit var tabLayout: TabLayout
-    private lateinit var pagerAdapter: ProfileViewPagerAdapter
+//    private lateinit var pagerAdapter: ProfileViewPagerAdapter
     private var currentUser : UserDetailsModel = UserDetailsModel()
     private val currentUserUid = FirebaseAuth.getInstance().currentUser?.uid
     private var currentUserPostsCount = 0
@@ -56,6 +54,15 @@ class ProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        EditProfile.setOnClickListener {
+            Toast.makeText(context, "Edit Profile is not implimented yet", Toast.LENGTH_SHORT).show()
+        }
+        my_pictures.setOnClickListener{
+            Toast.makeText(context, "This is My Picture Section ", Toast.LENGTH_SHORT).show()
+        }
+        saved_pictures.setOnClickListener {
+            Toast.makeText(context, "Here tagged Pictures Will be Shown", Toast.LENGTH_SHORT).show()
+        }
 
         for(i in ListsPassingHelper.userDetailsList){
             if(i.uid == currentUserUid.toString()){
@@ -70,22 +77,6 @@ class ProfileFragment : Fragment() {
             val intent = CropImage.activity(ImageUri3)
                 .getIntent(requireContext())
             startActivityForResult(intent, CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE)
-
-//            val fm :FragmentManager = childFragmentManager
-//            pagerAdapter = ProfileViewPagerAdapter(fm, lifecycle)
-//            ViewPageerr.setAdapter(pagerAdapter)
-//
-//            tabLayout.addTab(tabLayout.newTab().setText("MY Posts"))
-//            tabLayout.addTab(tabLayout.newTab().setText("Tag Posts"))
-//            tabLayout.addOnTabSelectedListener(
-//                object : OnTabSelectedListener {
-//                    override fun onTabSelected(tab: TabLayout.Tab) {
-//                        ViewPageerr.setCurrentItem(tab.position)
-//                    }
-//
-//                    override fun onTabUnselected(tab: TabLayout.Tab) {}
-//                    override fun onTabReselected(tab: TabLayout.Tab) {}
-//                })
 
         }
         Glide.with(this)

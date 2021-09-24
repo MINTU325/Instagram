@@ -1,4 +1,4 @@
-package com.example.instagram
+package com.example.instagram.MOdels
 
 class UserPostsModel(
     val postId: String?,
