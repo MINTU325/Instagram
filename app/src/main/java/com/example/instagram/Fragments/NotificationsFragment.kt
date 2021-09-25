@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.instagram.NotificationFragment.NotificationFragmentAdapter
 import com.example.instagram.R
-import com.example.instagram.MOdels.UserPostsModel
+import com.example.instagram.Models.UserPostsModel
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -26,6 +26,9 @@ class NotificationsFragment : Fragment(R.layout.fragment_notifications) {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+        // Fetching all posts for notifications from firebase realtime database
+
         databaseReference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 for (uid in snapshot.children) {

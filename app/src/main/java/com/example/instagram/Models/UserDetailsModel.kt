@@ -1,4 +1,4 @@
-package com.example.instagram.MOdels
+package com.example.instagram.Models
 
 class UserDetailsModel(
     val fullName: String?,

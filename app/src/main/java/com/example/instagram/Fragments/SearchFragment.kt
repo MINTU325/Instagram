@@ -8,9 +8,9 @@ import android.view.View
 import androidx.appcompat.widget.LinearLayoutCompat.*
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.instagram.MOdels.ListsPassingHelper
+import com.example.instagram.Models.ListsPassingHelper
 import com.example.instagram.R
-import com.example.instagram.MOdels.UserDetailsModel
+import com.example.instagram.Models.UserDetailsModel
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -31,6 +31,8 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
         etSearch.addTextChangedListener(object : TextWatcher{
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
             }
+
+            // On changing of text at time of search showing different users according to matched result.
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 ivBack.visibility = VISIBLE

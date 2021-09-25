@@ -11,9 +11,9 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
-import com.example.instagram.MOdels.ListsPassingHelper
+import com.example.instagram.Models.ListsPassingHelper
 import com.example.instagram.R
-import com.example.instagram.MOdels.UserDetailsModel
+import com.example.instagram.Models.UserDetailsModel
 import com.google.android.gms.tasks.Continuation
 import com.google.android.gms.tasks.Task
 import com.google.android.material.tabs.TabLayout
@@ -55,7 +55,7 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         EditProfile.setOnClickListener {
-            Toast.makeText(context, "Edit Profile is not implimented yet", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, "Edit Profile is not implemented yet", Toast.LENGTH_SHORT).show()
         }
         my_pictures.setOnClickListener{
             Toast.makeText(context, "This is My Picture Section ", Toast.LENGTH_SHORT).show()
@@ -102,6 +102,8 @@ class ProfileFragment : Fragment() {
             .into(imageIV7)
 
     }
+
+    // Setting current user data in profile section by checking realtime data from firebase.
 
     private fun setCurrentUserData(){
         currentUserPostsCount = 0
@@ -154,6 +156,8 @@ class ProfileFragment : Fragment() {
             ProfileStatus.text = bio
         }
     }
+
+    // Changing current user profile picture and saving it into firebase storage.
 
     private fun updateCurrentUserprofileInDatabase(){
         val fileRef = storageReference.child(currentUserUid.toString() + ".jpg")

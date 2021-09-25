@@ -12,8 +12,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.instagram.*
 import com.example.instagram.HomeFragment.PostAdapter
-import com.example.instagram.MOdels.ListsPassingHelper
-import com.example.instagram.MOdels.UserPostsModel
+import com.example.instagram.Models.ListsPassingHelper
+import com.example.instagram.Models.UserPostsModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -35,6 +35,8 @@ class HomeFragment : Fragment() {
         // Inflate the layout for this fragment
 
         ListsPassingHelper.postImagesUrl.clear()
+
+        // Fetching all posts from firebase realtime database
 
         databaseReference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {

@@ -3,8 +3,8 @@ package com.example.instagram.NotificationFragment
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.instagram.MOdels.ListsPassingHelper
-import com.example.instagram.MOdels.UserPostsModel
+import com.example.instagram.Models.ListsPassingHelper
+import com.example.instagram.Models.UserPostsModel
 import kotlinx.android.synthetic.main.fragment_notification_layout_view.view.*
 
 class NotificationFragmentViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
