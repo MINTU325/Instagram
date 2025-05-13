@@ -9,28 +9,30 @@ import androidx.viewpager2.widget.ViewPager2
 import com.example.instagram.R
 import com.example.instagram.Reels.VideoAdapter
 import com.example.instagram.Reels.videoModel
-import kotlinx.android.synthetic.main.fragment_reels.*
-import java.util.*
+import com.example.instagram.databinding.FragmentReelsBinding
 
 class ReelsFragment : Fragment() {
 
-    var videoList = mutableListOf<videoModel>();
+    private var _binding: FragmentReelsBinding? = null
+    private val binding get() = _binding!!
+
+    private var videoList = mutableListOf<videoModel>()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_reels, container, false)
+        // Inflate the layout for this fragment using ViewBinding
+        _binding = FragmentReelsBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        buildDta()
-
+        buildData()
     }
 
-    private fun buildDta() {
+    private fun buildData() {
         videoList.add(
             videoModel(
                 "MintuSaini34",
@@ -66,7 +68,12 @@ class ReelsFragment : Fragment() {
                 "https://firebasestorage.googleapis.com/v0/b/skype-8a506.appspot.com/o/yt1s.com%20-%20Tu%20chale%20sang%20chale%20song%20whatsapp%20status%20%20nature%20whatsapp%20status_360p.mp4?alt=media&token=c0ac13ef-4254-4327-9281-bb6baa332809"
             )
         )
-        viewpager2.adapter = VideoAdapter(videoList)
+        // Set the adapter for the ViewPager2
+        binding.viewpager2.adapter = VideoAdapter(videoList)
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null // Clean up binding
+    }
 }

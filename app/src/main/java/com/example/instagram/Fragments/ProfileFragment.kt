@@ -12,11 +12,11 @@ import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
 import com.example.instagram.Models.ListsPassingHelper
-import com.example.instagram.R
 import com.example.instagram.Models.UserDetailsModel
+import com.example.instagram.R
+import com.example.instagram.databinding.FragmentProfileBinding
 import com.google.android.gms.tasks.Continuation
 import com.google.android.gms.tasks.Task
-import com.google.android.material.tabs.TabLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -25,15 +25,12 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageTask
 import com.google.firebase.storage.UploadTask
-import com.theartofdev.edmodo.cropper.CropImage
-import kotlinx.android.synthetic.main.fragment_home.*
-import kotlinx.android.synthetic.main.fragment_profile.*
+import com.github.dhaval2404.imagepicker.ImagePicker
 
 class ProfileFragment : Fragment() {
-    private lateinit var ViewPageerr: ViewPager2
-    private lateinit var tabLayout: TabLayout
-//    private lateinit var pagerAdapter: ProfileViewPagerAdapter
-    private var currentUser : UserDetailsModel = UserDetailsModel()
+
+    private lateinit var binding: FragmentProfileBinding
+    private var currentUser: UserDetailsModel = UserDetailsModel()
     private val currentUserUid = FirebaseAuth.getInstance().currentUser?.uid
     private var currentUserPostsCount = 0
     private var currentUserFollowingsCount = 0
@@ -48,24 +45,28 @@ class ProfileFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false)
+        // Inflate the layout for this fragment using ViewBinding
+        binding = FragmentProfileBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        EditProfile.setOnClickListener {
+
+        binding.EditProfile.setOnClickListener {
             Toast.makeText(context, "Edit Profile is not implemented yet", Toast.LENGTH_SHORT).show()
         }
-        my_pictures.setOnClickListener{
+
+        binding.myPictures.setOnClickListener {
             Toast.makeText(context, "This is My Picture Section ", Toast.LENGTH_SHORT).show()
         }
-        saved_pictures.setOnClickListener {
+
+        binding.savedPictures.setOnClickListener {
             Toast.makeText(context, "Here tagged Pictures Will be Shown", Toast.LENGTH_SHORT).show()
         }
 
-        for(i in ListsPassingHelper.userDetailsList){
-            if(i.uid == currentUserUid.toString()){
+        for (i in ListsPassingHelper.userDetailsList) {
+            if (i.uid == currentUserUid.toString()) {
                 currentUser = i
                 break
             }
@@ -73,93 +74,90 @@ class ProfileFragment : Fragment() {
 
         setCurrentUserData()
 
-        myprofile_image.setOnClickListener {
-            val intent = CropImage.activity(ImageUri3)
-                .getIntent(requireContext())
-            startActivityForResult(intent, CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE)
-
+        // Use ImagePicker to change profile image
+        binding.myprofileImage.setOnClickListener {
+            ImagePicker.with(this)
+                .crop() // Crop the image
+                .compress(1024) // Compress the image size
+                .maxResultSize(1080, 1080) // Set max resolution
+                .start()
         }
+
         Glide.with(this)
             .load("https://firebasestorage.googleapis.com/v0/b/instagram-30de6.appspot.com/o/status%20pic%2Fimages%20(5).jpg?alt=media&token=9df2e006-6335-457c-b4bc-17610d64de64")
-            .into(imageIV1)
+            .into(binding.imageIV1)
         Glide.with(this)
             .load("https://firebasestorage.googleapis.com/v0/b/instagram-30de6.appspot.com/o/status%20pic%2Fimages%20(1).jpg?alt=media&token=69295414-e475-420a-8bf4-77dd27b4109a")
-            .into(imageIV2)
+            .into(binding.imageIV2)
         Glide.with(this)
             .load("https://firebasestorage.googleapis.com/v0/b/instagram-30de6.appspot.com/o/status%20pic%2Fimages%20(2).jpg?alt=media&token=c7249f98-0a2b-4392-96c0-382b59acf2a1")
-            .into(imageIV3)
+            .into(binding.imageIV3)
         Glide.with(this)
             .load("https://firebasestorage.googleapis.com/v0/b/instagram-30de6.appspot.com/o/status%20pic%2Fimages%20(3).jpg?alt=media&token=86023396-5b74-486a-a38c-49891f881de2")
-            .into(imageIV4)
+            .into(binding.imageIV4)
         Glide.with(this)
             .load("https://firebasestorage.googleapis.com/v0/b/instagram-30de6.appspot.com/o/status%20pic%2Fimages%20(4).jpg?alt=media&token=85abd3e8-21c8-4129-be7e-403e9b9dd51a")
-            .into(imageIV5)
+            .into(binding.imageIV5)
         Glide.with(this)
             .load("https://firebasestorage.googleapis.com/v0/b/instagram-30de6.appspot.com/o/status%20pic%2Fdownload%20(1).jpg?alt=media&token=04165875-380a-4796-9a9a-8c5044582251")
-            .into(imageIV6)
+            .into(binding.imageIV6)
         Glide.with(this)
             .load("https://firebasestorage.googleapis.com/v0/b/instagram-30de6.appspot.com/o/status%20pic%2Fimages.jpg?alt=media&token=15ca848c-b09c-4189-b721-2e864b3f91b8")
-            .into(imageIV7)
-
+            .into(binding.imageIV7)
     }
 
-    // Setting current user data in profile section by checking realtime data from firebase.
-
-    private fun setCurrentUserData(){
+    // Setting current user data in profile section by checking real-time data from Firebase.
+    private fun setCurrentUserData() {
         currentUserPostsCount = 0
         currentUserFollowingsCount = 0
         currentUserFollowersCount = 0
 
         firebaseDatabase.getReference("follows").child(currentUserUid.toString())
-            .child("followings").addValueEventListener(object : ValueEventListener{
+            .child("followings").addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
-                    for(i in snapshot.children){
+                    for (i in snapshot.children) {
                         currentUserFollowingsCount++
                     }
                 }
 
-                override fun onCancelled(error: DatabaseError) {
-                }
+                override fun onCancelled(error: DatabaseError) {}
             })
-        followings.text = currentUserFollowingsCount.toString()
+        binding.followings.text = currentUserFollowingsCount.toString()
 
         firebaseDatabase.getReference("follows").child(currentUserUid.toString())
-            .child("followers").addValueEventListener(object : ValueEventListener{
+            .child("followers").addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
-                    for(i in snapshot.children){
+                    for (i in snapshot.children) {
                         currentUserFollowersCount++
                     }
                 }
 
-                override fun onCancelled(error: DatabaseError) {
-                }
+                override fun onCancelled(error: DatabaseError) {}
             })
-        followers.text = currentUserFollowersCount.toString()
+        binding.followers.text = currentUserFollowersCount.toString()
 
         firebaseDatabase.getReference("posts").child(currentUserUid.toString())
-            .addValueEventListener(object : ValueEventListener{
+            .addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
-                    for(i in snapshot.children){
+                    for (i in snapshot.children) {
                         currentUserPostsCount++
                     }
                 }
 
-                override fun onCancelled(error: DatabaseError) {
-                }
+                override fun onCancelled(error: DatabaseError) {}
             })
-        totalPosts.text = currentUserPostsCount.toString()
+        binding.totalPosts.text = currentUserPostsCount.toString()
 
         currentUser.apply {
-            profileUsername.text = username
-            Glide.with(myprofile_image).load(profileImage).into(myprofile_image)
-            ProfileName.text = fullName
-            ProfileStatus.text = bio
+            binding.profileUsername.text = username
+            Glide.with(binding.myprofileImage).load(profileImage).into(binding.myprofileImage)
+            binding.ProfileName.text = fullName
+            binding.ProfileStatus.text = bio
         }
     }
 
-    // Changing current user profile picture and saving it into firebase storage.
-
-    private fun updateCurrentUserprofileInDatabase(){
+    // Changing current user profile picture and saving it into Firebase storage.
+    private fun updateCurrentUserprofileInDatabase() {
         val fileRef = storageReference.child(currentUserUid.toString() + ".jpg")
         var uploadTask: StorageTask<*>
         uploadTask = fileRef.putFile(ImageUri3!!)
@@ -182,10 +180,10 @@ class ProfileFragment : Fragment() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE && resultCode == Activity.RESULT_OK && data != null) {
-            val result2 = CropImage.getActivityResult(data)
-            ImageUri3 = result2.uri
-            myprofile_image.setImageURI(ImageUri3)
+        if (requestCode == ImagePicker.REQUEST_CODE && resultCode == Activity.RESULT_OK) {
+            // Get the Uri of the selected image
+            ImageUri3 = data?.data
+            binding.myprofileImage.setImageURI(ImageUri3)
             updateCurrentUserprofileInDatabase()
         }
     }
