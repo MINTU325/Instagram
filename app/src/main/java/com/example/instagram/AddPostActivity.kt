@@ -49,7 +49,7 @@ class AddPostActivity : AppCompatActivity() {
         storagePostePicref = FirebaseStorage.getInstance().reference.child("User Posts")
 
         // Open image picker
-        binding.btnSavePost.setOnClickListener {
+        binding.ivImagePost.setOnClickListener {
             checkPermissionsAndOpenPicker()
         }
 
