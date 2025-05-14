@@ -21,6 +21,8 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.example.instagram.databinding.FragmentLoginBinding
 
+// LoginFragment.kt
+
 class LoginFragment : Fragment(R.layout.fragment_login) {
 
     private lateinit var binding: FragmentLoginBinding
@@ -32,7 +34,6 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Initialize ViewBinding
         binding = FragmentLoginBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -41,6 +42,15 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         super.onViewCreated(view, savedInstanceState)
         val navController = Navigation.findNavController(view)
         val myPreference = MyPreference(requireContext())
+
+        // Check if the user is already logged in
+        if (myPreference.getLoginStatus()) {
+            // User is already logged in, directly go to MainScreenActivity
+            startActivity(Intent(context, MainScreenActivity::class.java))
+            activity?.finish()
+            return
+        }
+
         var email = myPreference.getEmail()
         binding.etEmail.setText(email)
 
@@ -62,50 +72,57 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
     // Login user with emailId and password
     private fun login() {
-        firebaseAuth.signInWithEmailAndPassword(binding.etEmail.text.toString(), binding.etPassword.text.toString())
-            .addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    getDataFromDatabase()
-                } else {
-                    Toast.makeText(context, "Wrong Credentials", Toast.LENGTH_SHORT).show()
-                }
+        firebaseAuth.signInWithEmailAndPassword(
+            binding.etEmail.text.toString(),
+            binding.etPassword.text.toString()
+        ).addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                saveLoginStatus() // Save login status in SharedPreferences
+                getDataFromDatabase()
+            } else {
+                Toast.makeText(context, "Wrong Credentials", Toast.LENGTH_SHORT).show()
             }
+        }
+    }
+
+    // Save login status in SharedPreferences
+    private fun saveLoginStatus() {
+        val myPreference = MyPreference(requireContext())
+        myPreference.setLoginStatus(true)
     }
 
     // After successful login, get data of current user from Firebase Realtime Database
     private fun getDataFromDatabase() {
         ListsPassingHelper.userDetailsList.clear()
+        val myPreference = MyPreference(requireContext())
+        val userId = firebaseAuth.currentUser?.uid ?: ""
 
-        // Use single value event for one-time data fetching instead of continuously listening to changes
-        databaseReference.addListenerForSingleValueEvent(object : ValueEventListener {
+        // Fetching only logged-in user details using UID
+        databaseReference.child(userId).addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                for (userDetails in snapshot.children) {
-                    // Handle possible null values safely
-                    userDetails.getValue(UserDetailsModel::class.java)?.let { user ->
-                        ListsPassingHelper.userDetailsList.add(user)
-                    }
+                snapshot.getValue(UserDetailsModel::class.java)?.let { user ->
+                    // Save user details in SharedPreferences
+                    myPreference.saveUserDetails(
+                        userId = userId,
+                        userName = user.fullName ?: "",
+                        profileImage = user.profileImage ?: ""
+                    )
+                    Toast.makeText(context, "Login Successful", Toast.LENGTH_SHORT).show()
+                    startActivity(Intent(context, MainScreenActivity::class.java))
+                    activity?.finish()
                 }
-
-                // Show a success message and navigate to MainScreenActivity
-                Toast.makeText(context, "Login Successful", Toast.LENGTH_SHORT).show()
-                startActivity(Intent(context, MainScreenActivity::class.java))
-                activity?.finish() // Optionally finish the current activity
             }
 
             override fun onCancelled(error: DatabaseError) {
                 Toast.makeText(context, "Failed to load data", Toast.LENGTH_SHORT).show()
                 Log.e("FirebaseError", "Error loading data: ${error.message}")
-
             }
         })
     }
-
     // Checking user input details are valid locally
     private fun isValid(): Boolean {
-        // Check if email format is valid
         if (!Patterns.EMAIL_ADDRESS.matcher(binding.etEmail.text.toString()).matches())
             return false
-        // Check if password is at least 6 characters long
         if (binding.etPassword.text.toString().length < 6)
             return false
         return true

@@ -38,10 +38,11 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Initialize Firebase only after ensuring FirebaseApp is initialized
+        // Ensure Firebase is initialized before making database calls
         if (FirebaseApp.getApps(requireContext()).isNotEmpty()) {
             firebaseAuth = FirebaseAuth.getInstance()
             databaseReference = FirebaseDatabase.getInstance().getReference("posts")
@@ -53,6 +54,7 @@ class HomeFragment : Fragment() {
         setupClickListeners()
         setupStatusImages()
     }
+
     // Fetching all posts from Firebase Realtime Database
     private fun fetchPosts() {
         databaseReference.addValueEventListener(object : ValueEventListener {
@@ -65,7 +67,7 @@ class HomeFragment : Fragment() {
                         ListsPassingHelper.postImagesUrl.add(userPostsModel.image.toString())
                     }
                 }
-                list.reverse()
+                list.reverse() // Reverse the list to get latest posts first
                 setRecyclerView()
             }
 
@@ -77,11 +79,13 @@ class HomeFragment : Fragment() {
 
     // Setting up RecyclerView
     private fun setRecyclerView() {
+        checkNotNull(binding) { "Binding is null, make sure onCreateView is called before this." }
         binding.rvRecyclerViewHome.layoutManager = LinearLayoutManager(requireContext())
         binding.rvRecyclerViewHome.adapter = PostAdapter(list)
     }
 
 
+    // Setup the status images
     private fun setupStatusImages() {
         val images = listOf(
             "https://firebasestorage.googleapis.com/v0/b/instagram-30de6.appspot.com/o/status%20pic%2Fimages%20(5).jpg?alt=media&token=9df2e006-6335-457c-b4bc-17610d64de64",
