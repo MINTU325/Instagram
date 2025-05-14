@@ -3,7 +3,7 @@ package com.example.instagram.NotificationFragment
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.instagram.R
+import com.example.instagram.databinding.FragmentNotificationLayoutViewBinding
 import com.example.instagram.Models.UserPostsModel
 
 class NotificationFragmentAdapter(private var list : List<UserPostsModel>) : RecyclerView.Adapter<NotificationFragmentViewHolder>() {
@@ -12,8 +12,8 @@ class NotificationFragmentAdapter(private var list : List<UserPostsModel>) : Rec
         parent: ViewGroup,
         viewType: Int
     ): NotificationFragmentViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.fragment_notification_layout_view,parent,false)
-        return NotificationFragmentViewHolder(view)
+        val binding = FragmentNotificationLayoutViewBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return NotificationFragmentViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: NotificationFragmentViewHolder, position: Int) {
