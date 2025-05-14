@@ -49,6 +49,9 @@ class HomeFragment : Fragment() {
         } else {
             Toast.makeText(requireContext(), "Firebase not initialized.", Toast.LENGTH_SHORT).show()
         }
+
+        setupClickListeners()
+        setupStatusImages()
     }
     // Fetching all posts from Firebase Realtime Database
     private fun fetchPosts() {
@@ -78,7 +81,7 @@ class HomeFragment : Fragment() {
         binding.rvRecyclerViewHome.adapter = PostAdapter(list)
     }
 
-    // Setting up Status Images with Glide
+
     private fun setupStatusImages() {
         val images = listOf(
             "https://firebasestorage.googleapis.com/v0/b/instagram-30de6.appspot.com/o/status%20pic%2Fimages%20(5).jpg?alt=media&token=9df2e006-6335-457c-b4bc-17610d64de64",

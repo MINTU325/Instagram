@@ -2,6 +2,7 @@ package com.example.instagram.UserSignIn
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
@@ -93,6 +94,8 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
             override fun onCancelled(error: DatabaseError) {
                 Toast.makeText(context, "Failed to load data", Toast.LENGTH_SHORT).show()
+                Log.e("FirebaseError", "Error loading data: ${error.message}")
+
             }
         })
     }

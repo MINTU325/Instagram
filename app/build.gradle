@@ -69,12 +69,13 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
     // Firebase
-        implementation platform('com.google.firebase:firebase-bom:33.13.0')
-        implementation 'com.google.firebase:firebase-analytics-ktx'
-        implementation 'com.google.firebase:firebase-auth-ktx'
-        implementation 'com.google.firebase:firebase-database-ktx'
-        implementation 'com.google.firebase:firebase-storage-ktx'
 
+    // Firebase SDKs with Firebase BOM
+    implementation platform('com.google.firebase:firebase-bom:33.13.0')  // Firebase BOM for version management
+    implementation 'com.google.firebase:firebase-auth'  // Firebase Authentication SDK
+    implementation 'com.google.firebase:firebase-analytics-ktx'  // Firebase Analytics SDK
+    implementation 'com.google.firebase:firebase-database-ktx'  // Firebase Realtime Database SDK
+    implementation 'com.google.firebase:firebase-storage-ktx'  // Firebase Storage SDK
 // Glide (Latest)
     implementation 'com.github.bumptech.glide:glide:4.15.1'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.15.1'
