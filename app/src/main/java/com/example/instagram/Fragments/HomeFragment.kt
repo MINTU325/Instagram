@@ -127,3 +127,5 @@ class HomeFragment : Fragment() {
         _binding = null // Clear the binding to avoid memory leaks
     }
 }
+
+//initial commit
